@@ -6,7 +6,7 @@ namespace SpriteKind {
 namespace DataKind {
     export const Direction = DataKind.create()
 }
-function makeBlueprintHeart() {
+function makeBlueprintHeart () {
     blueprints.createBlueprint("Heart", SpriteKind.Pickup).setImages(FacingDirection.Down, ActionKind.None, [img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -24,7 +24,7 @@ function makeBlueprintHeart() {
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . f f f f f f . f f f f f f . 
         . f f 3 3 3 3 f f f 3 3 3 3 f f 
@@ -41,7 +41,7 @@ function makeBlueprintHeart() {
         . . . . . . f f b f f . . . . . 
         . . . . . . . f f f . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -58,7 +58,7 @@ function makeBlueprintHeart() {
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . b b b b c . . c b b b c . . 
         . b d 1 1 1 3 c c 3 d 1 1 3 c . 
@@ -75,7 +75,7 @@ function makeBlueprintHeart() {
         . . . . b 3 1 1 1 1 d c . . . . 
         . . . . . c b 1 1 b c . . . . . 
         . . . . . . c b b c . . . . . . 
-        `, img`
+        `,img`
         . . . 3 3 . 3 3 . . . . . . . . 
         . . 3 3 1 3 1 3 3 . . . . . . . 
         . . 3 1 1 1 1 1 3 . . 3 . 3 . . 
@@ -106,7 +106,7 @@ function makeBlueprintHeart() {
         }
     })
 }
-function interactMerchant() {
+function interactMerchant () {
     if (game.ask("Shop Keeper", "Summon a Heart for 5g?")) {
         if (thePlayer.getDataValue(DataKind.Score) >= 5) {
             music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
@@ -130,12 +130,12 @@ function interactMerchant() {
         game.splash("Shop Keeper", "You can't attack any faster.")
     }
 }
-function spawnAtRandom(name: string, count: number) {
+function spawnAtRandom (name: string, count: number) {
     for (let index = 0; index < count; index++) {
         tiles.placeOnRandomTile(gameObjects.createGameObject(blueprints.getBlueprint("Ghost")).getSprite(), sprites.dungeon.darkGroundCenter)
     }
 }
-function clearScreenSprites() {
+function clearScreenSprites () {
     for (let value of uiScreenSprites) {
         sprites.destroy(value)
     }
@@ -156,7 +156,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         }
     }
 })
-function makeBlueprintPlayer() {
+function makeBlueprintPlayer () {
     blueprints.createBlueprint("Player", SpriteKind.Player).setImages(FacingDirection.Down, ActionKind.Walk, [img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -174,7 +174,7 @@ function makeBlueprintPlayer() {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -191,7 +191,7 @@ function makeBlueprintPlayer() {
         . . . . f 4 4 5 5 f e e . . . . 
         . . . . f f f f f f f . . . . . 
         . . . . f f f . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
         . . . f f f 2 2 2 2 f f f . . . 
@@ -208,7 +208,7 @@ function makeBlueprintPlayer() {
         . . 4 4 f 4 4 5 5 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f f 2 2 f f f . . . . 
@@ -243,7 +243,7 @@ function makeBlueprintPlayer() {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -260,7 +260,7 @@ function makeBlueprintPlayer() {
         . . . 4 f 2 2 2 2 2 e d d 4 . . 
         . . . e f f f f f f e e 4 . . . 
         . . . . f f f . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
         . . . f e e e f f e e e f . . . 
@@ -277,7 +277,7 @@ function makeBlueprintPlayer() {
         . . 4 4 f 4 4 4 4 4 4 f 4 4 . . 
         . . . . . f f f f f f . . . . . 
         . . . . . f f . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f . . . . . . 
         . . . . f f e e e e f f . . . . 
@@ -312,7 +312,7 @@ function makeBlueprintPlayer() {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -329,7 +329,7 @@ function makeBlueprintPlayer() {
         . . f f 5 5 f e e f f f . . . . 
         . . f f f f f f f f f f . . . . 
         . . . f f f . . . f f . . . . . 
-        `, img`
+        `,img`
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
         . . f 2 2 2 f e e e e f f . . . 
@@ -346,7 +346,7 @@ function makeBlueprintPlayer() {
         . . . f 5 5 4 f e e f . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . . . . f f f . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . f f f f f f . . . . . . 
         . . . f 2 f e e e e f f . . . . 
@@ -381,7 +381,7 @@ function makeBlueprintPlayer() {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -398,7 +398,7 @@ function makeBlueprintPlayer() {
         . . . . f f f e e f 5 5 f f . . 
         . . . . f f f f f f f f f f . . 
         . . . . . f f . . . f f f . . . 
-        `, img`
+        `,img`
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
         . . . f f e e e e f 2 2 2 f . . 
@@ -415,7 +415,7 @@ function makeBlueprintPlayer() {
         . . . . . f e e f 4 5 5 f . . . 
         . . . . . . f f f f f f . . . . 
         . . . . . . . f f f . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . f f f f f f . . . . 
         . . . . f f e e e e f 2 f . . . 
@@ -440,7 +440,7 @@ function makeBlueprintPlayer() {
     blueprints.getBlueprint("Player").setDataValue(DataKind.AttackCooldown, 1000)
     blueprints.getBlueprint("Player").setDataValue(DataKind.Speed, 90)
 }
-function makeCoinBlueprint() {
+function makeCoinBlueprint () {
     blueprints.createBlueprint("Coin", SpriteKind.Pickup).setImages(FacingDirection.Down, ActionKind.Walk, [img`
         . . b b b b . . 
         . b 5 5 5 5 b . 
@@ -450,7 +450,7 @@ function makeCoinBlueprint() {
         c d d 1 1 d d c 
         . f d d d d f . 
         . . f f f f . . 
-        `, img`
+        `,img`
         . . b b b . . . 
         . b 5 5 5 b . . 
         b 5 d 3 d 5 b . 
@@ -459,7 +459,7 @@ function makeCoinBlueprint() {
         c 5 d 1 d d c . 
         . f d d d f . . 
         . . f f f . . . 
-        `, img`
+        `,img`
         . . . b b . . . 
         . . b 5 5 b . . 
         . b 5 d 1 5 b . 
@@ -468,7 +468,7 @@ function makeCoinBlueprint() {
         . c 5 1 d d c . 
         . . f d d f . . 
         . . . f f . . . 
-        `, img`
+        `,img`
         . . . b b . . . 
         . . b 5 5 b . . 
         . . b 1 1 b . . 
@@ -477,7 +477,7 @@ function makeCoinBlueprint() {
         . . c d d c . . 
         . . c 3 3 c . . 
         . . . f f . . . 
-        `, img`
+        `,img`
         . . . b b . . . 
         . . b 5 5 b . . 
         . b 5 1 d 5 b . 
@@ -486,7 +486,7 @@ function makeCoinBlueprint() {
         . c d d 1 5 c . 
         . . f d d f . . 
         . . . f f . . . 
-        `, img`
+        `,img`
         . . . b b b . . 
         . . b 5 5 5 b . 
         . b 5 d 3 d 5 b 
@@ -511,7 +511,7 @@ function makeCoinBlueprint() {
         }
     })
 }
-function makeBlueprintMagicShot() {
+function makeBlueprintMagicShot () {
     blueprints.createBlueprint("MagicShot", SpriteKind.Projectile).setImages(FacingDirection.Down, ActionKind.None, [img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
@@ -529,7 +529,7 @@ function makeBlueprintMagicShot() {
         . . . . . . . b d b . . . . . . 
         . . . . . . . . b . . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . . . . . . . . . . . . 
         . . . . . . . b d b . . . . . . 
@@ -546,7 +546,7 @@ function makeBlueprintMagicShot() {
         . . . . . . c b d b c . . . . . 
         . . . . . . . b d b . . . . . . 
         . . . . . . . . . . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . . . . . 
         . . . . . 1 . . . . . . . . . . 
         . . 1 1 . . . 1 1 1 . . . . . . 
@@ -595,7 +595,7 @@ function makeBlueprintMagicShot() {
         }
     })
 }
-function showGameScreen() {
+function showGameScreen () {
     clearScreenSprites()
     scene.setBackgroundImage(img`
         ................................................................................................................................................................
@@ -726,7 +726,7 @@ function showGameScreen() {
     music.play(music.createSong(assets.song`mySong1`), music.PlaybackMode.LoopingInBackground)
     music.setVolume(255)
 }
-function setupPlayer() {
+function setupPlayer () {
     thePlayer = gameObjects.createGameObject(blueprints.getBlueprint("Player"))
     tiles.placeOnTile(thePlayer.getSprite(), tiles.getTileLocation(7, 2))
     controller.moveSprite(thePlayer.getSprite(), thePlayer.getDataValue(DataKind.Speed), thePlayer.getDataValue(DataKind.Speed))
@@ -734,7 +734,7 @@ function setupPlayer() {
     theMerchant = gameObjects.createGameObject(blueprints.getBlueprint("Merchant"))
     tiles.placeOnTile(theMerchant.getSprite(), tiles.getTileLocation(8, 1))
 }
-function makeBlueprintGhost() {
+function makeBlueprintGhost () {
     blueprints.createBlueprint("Ghost", SpriteKind.Enemy).setImages(FacingDirection.Down, ActionKind.Walk, [img`
         ........................
         ........................
@@ -760,7 +760,7 @@ function makeBlueprintGhost() {
         ........................
         ........................
         ........................
-        `, img`
+        `,img`
         ........................
         ........................
         ........................
@@ -785,7 +785,7 @@ function makeBlueprintGhost() {
         ........................
         ........................
         ........................
-        `, img`
+        `,img`
         ........................
         ........................
         ........................
@@ -810,7 +810,7 @@ function makeBlueprintGhost() {
         ........................
         ........................
         ........................
-        `, img`
+        `,img`
         ........................
         ........................
         ........................
@@ -860,7 +860,7 @@ function makeBlueprintGhost() {
         }
     })
 }
-function makeMerchantBlueprint() {
+function makeMerchantBlueprint () {
     blueprints.createBlueprint("Merchant", SpriteKind.NPC).setImages(FacingDirection.Down, ActionKind.None, [img`
         . . . . f f f f . . . . 
         . . f f e e e e f f . . 
@@ -878,7 +878,7 @@ function makeMerchantBlueprint() {
         4 4 f 6 6 6 6 6 6 f 4 4 
         . . . f f f f f f . . . 
         . . . f f . . f f . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . 
         . . . f f f f f f . . . 
         . f f f e e e e f f f . 
@@ -895,7 +895,7 @@ function makeMerchantBlueprint() {
         . . f 6 6 6 6 f e e . . 
         . . f f f f f f f . . . 
         . . f f f . . . . . . . 
-        `, img`
+        `,img`
         . . . . . . . . . . . . 
         . . . f f f f f f . . . 
         . f f f e e e e f f f . 
@@ -913,8 +913,9 @@ function makeMerchantBlueprint() {
         . . . f f f f f f f . . 
         . . . . . . . f f f . . 
         `])
+    blueprints.getBlueprint("Merchant").setAnimateWhenIdle(true)
 }
-function showStartScreen() {
+function showStartScreen () {
     scene.setBackgroundImage(img`
         9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999966666699969999999999999999999999999999999999999999999999999999
         9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -1040,8 +1041,8 @@ function showStartScreen() {
     uiScreenSprites = [sprites.create(image.create(132, 64), SpriteKind.UI), sprites.create(image.create(132, 32), SpriteKind.UI)]
     uiScreenSprites[0].image.drawRect(0, 0, 132, 64, 7)
     images.drawTextCentered(uiScreenSprites[0].image, "Deadly\\nDungeon\\nof Death", 7, 2, true)
-    images.drawTextCentered(uiScreenSprites[1].image, "PRESS A TO START", 0, 1, false)
-    uiScreenSprites[1].y += 42
+images.drawTextCentered(uiScreenSprites[1].image, "PRESS A TO START", 0, 1, false)
+uiScreenSprites[1].y += 42
     music.stopAllSounds()
     music.setVolume(175)
     music.play(music.createSong(assets.song`title`), music.PlaybackMode.LoopingInBackground)
