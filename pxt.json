@@ -3,7 +3,7 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "PuppyBreath": "github:reedkimble/puppybreath_mca#ea1c3b99b4418b29a0156ac3e604db8fd80abb7d"
+        "PuppyBreath": "github:reedkimble/puppybreath_mca#c9c8c4fe9067920fe0c84b3022db56a8a887a1a9"
     },
     "files": [
         "main.blocks",
@@ -22,7 +22,7 @@
         "branch": "v1.12.51",
         "tag": "v1.12.51",
         "commits": "https://github.com/microsoft/pxt-arcade/commits/eb9fd884260f64c934fb51355e36f8c76272b6b4",
-        "target": "1.12.51",
+        "target": "1.12.53",
         "pxt": "8.5.63",
         "targetId": "arcade"
     },
