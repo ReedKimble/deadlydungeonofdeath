@@ -3,7 +3,7 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "PuppyBreath": "github:reedkimble/puppybreath_mca#c9c8c4fe9067920fe0c84b3022db56a8a887a1a9"
+        "PuppyBreath": "github:reedkimble/puppybreath_mca#f3b0cfd31d6cab74d10923a8b872bd8c7d6be0fc"
     },
     "files": [
         "main.blocks",

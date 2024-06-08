@@ -107,27 +107,71 @@ function makeBlueprintHeart () {
     })
 }
 function interactMerchant () {
-    if (game.ask("Shop Keeper", "Summon a Heart for 5g?")) {
-        if (thePlayer.getDataValue(DataKind.Score) >= 5) {
-            music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
-            thePlayer.setDataValue(DataKind.Score, thePlayer.getDataValue(DataKind.Score) - 5)
-            tiles.placeOnRandomTile(gameObjects.createGameObject(blueprints.getBlueprint("Heart")).getSprite(), sprites.dungeon.floorDarkDiamond)
-        } else {
-            game.splash("Shop Keeper", "You don't have enough coin!")
-        }
-    }
-    if (thePlayer.getBlueprint().getDataValue(DataKind.AttackCooldown) > 200) {
-        if (game.ask("Shop Keeper", "Attack faster for 20g?")) {
-            if (thePlayer.getDataValue(DataKind.Score) >= 20) {
-                music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.InBackground)
-                thePlayer.setDataValue(DataKind.Score, thePlayer.getDataValue(DataKind.Score) - 20)
-                thePlayer.getBlueprint().setDataValue(DataKind.AttackCooldown, thePlayer.getBlueprint().getDataValue(DataKind.AttackCooldown) - 200)
+    game.setDialogFrame(img`
+        ..bbbbbbbbbbbbbbbbbbbb..
+        .bd111111111111111111db.
+        bd1dbbbbbbbbbbbbbbbbd1db
+        b1dbbbbbbbbbbbbbbbbbbd1b
+        b1bd1111111111111111db1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1b111111111111111111b1b
+        b1bd1111111111111111db1b
+        bd1bbbbbbbbbbbbbbbbbb1db
+        bbd111111111111111111dbb
+        .bbbbbbbbbbbbbbbbbbbbbb.
+        ..bbbbbbbbbbbbbbbbbbbb..
+        `)
+    game.setDialogCursor(img`
+        . d d d d d d d . 
+        b b b b b b b b b 
+        b b b b b b b b b 
+        d b b b b b b b c 
+        . d b b b b b c . 
+        . . d b b b c . . 
+        . . . d b c . . . 
+        `)
+    game.showLongText("Welcome traveler. How can I help you?", DialogLayout.Bottom)
+    answer = dialogs.selectChoice(["Summon a heart for me.", "Make me attack faster.", "Never mind."])
+    if (answer == 0) {
+        game.showLongText("Sure, summoning a heart will cost 5g. Do you accept?", DialogLayout.Bottom)
+        answer = dialogs.selectChoice(["Yes", "No"])
+        if (answer == 0) {
+            if (thePlayer.getDataValue(DataKind.Score) >= 5) {
+                music.play(music.melodyPlayable(music.beamUp), music.PlaybackMode.InBackground)
+                thePlayer.setDataValue(DataKind.Score, thePlayer.getDataValue(DataKind.Score) - 5)
+                tiles.placeOnRandomTile(gameObjects.createGameObject(blueprints.getBlueprint("Heart")).getSprite(), sprites.dungeon.floorDarkDiamond)
             } else {
                 game.splash("Shop Keeper", "You don't have enough coin!")
             }
         }
-    } else {
-        game.splash("Shop Keeper", "You can't attack any faster.")
+    } else if (answer == 1) {
+        if (thePlayer.getBlueprint().getDataValue(DataKind.AttackCooldown) > 200) {
+            game.showLongText("Sure, summoning a heart will cost 5g. Do you accept?", DialogLayout.Bottom)
+            answer = dialogs.selectChoice(["Yes", "No"])
+            if (answer == 0) {
+                if (thePlayer.getDataValue(DataKind.Score) >= 20) {
+                    music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.InBackground)
+                    thePlayer.setDataValue(DataKind.Score, thePlayer.getDataValue(DataKind.Score) - 20)
+                    thePlayer.getBlueprint().setDataValue(DataKind.AttackCooldown, thePlayer.getBlueprint().getDataValue(DataKind.AttackCooldown) - 200)
+                } else {
+                    game.splash("Shop Keeper", "You don't have enough coin!")
+                }
+            }
+        } else {
+            game.splash("Shop Keeper", "You can't attack any faster.")
+        }
     }
 }
 function spawnAtRandom (name: string, count: number) {
@@ -929,6 +973,7 @@ function makeMerchantBlueprint () {
 }
 let theMerchant: GameObject = null
 let uiScreenSprites: Sprite[] = []
+let answer = 0
 let thePlayer: GameObject = null
 let gameState = 0
 gameState = 0
